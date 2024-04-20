@@ -10,7 +10,7 @@ Motor Driver for Raspberry Pi to control DC and Stepper Motors
 
 1. Open Terminal and download the code by writing: 
    ```
-   git clone https://github.com/sbcshop/MotorShield.git
+   git clone https://github.com/randomev/MotorShield.git
    ```
 
 2. Your code will be downloaded to '/home/pi' directory. Use 'ls' command to check the list of directories.
@@ -21,6 +21,21 @@ Motor Driver for Raspberry Pi to control DC and Stepper Motors
 
 5. For interfacing Stepper Motor use example code 'Stepper_Test.py'
 
+6. In Raspberry 5, you need to do
+
+sudo apt remove python3-rpi.gpio
+sudo apt install python3-rpi-lgpio
+
+https://rpi-lgpio.readthedocs.io/en/latest/install.html
+
+https://forums.raspberrypi.com/viewtopic.php?p=2160578#p2160578
+
+Motor 4 pin 32 collides, seen with this:
+gpioinfo 4|grep "\[used"
+
+So motor4 is can't be used for now with pi 5?
+
+https://rpi-lgpio.readthedocs.io/_/downloads/en/latest/pdf/
 
 
 ## Motorshield GUI
