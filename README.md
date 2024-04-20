@@ -30,10 +30,23 @@ https://rpi-lgpio.readthedocs.io/en/latest/install.html
 
 https://forums.raspberrypi.com/viewtopic.php?p=2160578#p2160578
 
-Motor 4 pin 32 collides, seen with this:
-gpioinfo 4|grep "\[used"
+Motor 4 pin 32 collides with ethernet pin supposedly and raises an error of
 
-So motor4 is can't be used for now with pi 5?
+lgpio.error: 'GPIO not allocated'
+
+usage of pins can be seen with this:
+
+gpioinfo 4|grep "\[used"
+´´´
+   line   7:      "GPIO7"   "spi0 CS1"  output   active-low [used]
+   line   8:      "GPIO8"   "spi0 CS0"  output   active-low [used]
+   line  32:  "ETH_RST_N"  "phy-reset"  output   active-low [used]
+   line  34: "CD0_IO0_MICCLK" "cam0_reg" output active-high [used]
+   line  44: "RP1_STAT_LED" "PWR" output active-low [used]
+   line  46: "CD1_IO0_MICCLK" "cam1_reg" output active-high [used]
+´´´
+
+and motor 4 enable is pin 32, so motor4 is can't be used for now with pi 5? So it is removed away from PiMotor.py line 28, still 3 motors can be used.
 
 https://rpi-lgpio.readthedocs.io/_/downloads/en/latest/pdf/
 
